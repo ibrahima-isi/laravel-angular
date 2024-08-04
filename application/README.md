@@ -3,8 +3,8 @@ Ce projet comprend 2 parties: une partie front avec angular et une partie back a
 
 ## Backend
 - [x] CRUD UTILISATEUR
-- [ ] CRUD BURGER
-- [ ] CRUD COMMANDE
+- [x] CRUD BURGER
+- [x] CRUD ORDER
 - [ ] CRUD PAYEMENT
 - [ ] EXPOSITION DES API 
 
