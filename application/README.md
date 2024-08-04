@@ -2,7 +2,7 @@
 Ce projet comprend 2 parties: une partie front avec angular et une partie back avec laravel 11
 
 ## Backend
-- [ ] CRUD UTILISATEUR
+- [x] CRUD UTILISATEUR
 - [ ] CRUD BURGER
 - [ ] CRUD COMMANDE
 - [ ] CRUD PAYEMENT
