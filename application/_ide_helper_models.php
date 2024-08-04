@@ -13,7 +13,7 @@
 
 namespace App\Models{
 /**
- * 
+ *
  *
  * @property int $id
  * @property string $name
@@ -39,7 +39,7 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- * 
+ *
  *
  * @property int $id
  * @property int $user_id
@@ -49,23 +49,23 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Database\Factories\CommandeFactory factory($count = null, $state = [])
- * @method static \Illuminate\Database\Eloquent\Builder|Commande newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Commande newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Commande query()
- * @method static \Illuminate\Database\Eloquent\Builder|Commande whereBurgerId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Commande whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Commande whereDateCommand($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Commande whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Commande whereStatus($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Commande whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Commande whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Order newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Order query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereBurgerId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereDateCommand($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereUserId($value)
  */
 	class Commande extends \Eloquent {}
 }
 
 namespace App\Models{
 /**
- * 
+ *
  *
  * @property int $id
  * @property int $commande_id
@@ -93,7 +93,7 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- * 
+ *
  *
  * @property int $id
  * @property string $name
@@ -113,7 +113,7 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- * 
+ *
  *
  * @property int $id
  * @property string $firstname

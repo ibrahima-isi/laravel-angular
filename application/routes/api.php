@@ -32,3 +32,40 @@ Route::delete('/users/{id}', 'App\Http\Controllers\Admin\UserController@destroy'
 /**
  * user routes
  */
+
+/**
+ * burger routes
+ */
+Route::get('/burgers', 'App\Http\Controllers\BurgerController@index');
+Route::get('/burgers/{id}', 'App\Http\Controllers\BurgerController@show');
+Route::post('/burgers', 'App\Http\Controllers\BurgerController@store');
+Route::put('/burgers/{id}', 'App\Http\Controllers\BurgerController@update');
+Route::delete('/burgers/{id}', 'App\Http\Controllers\BurgerController@destroy');
+
+/**
+ * order routes
+ */
+Route::get('/orders', 'App\Http\Controllers\OrderController@index');
+Route::get('/orders/{id}', 'App\Http\Controllers\OrderController@show');
+Route::post('/orders', 'App\Http\Controllers\OrderController@store');
+Route::put('/orders/{id}', 'App\Http\Controllers\OrderController@update');
+Route::delete('/orders/{id}', 'App\Http\Controllers\OrderController@destroy');
+
+/**
+ * orderItem routes
+ */
+//Route::get('/orderItems', 'App\Http\Controllers\OrderItemController@index');
+//Route::get('/orderItems/{orderItem}', 'App\Http\Controllers\OrderItemController@show');
+//Route::post('/orderItems', 'App\Http\Controllers\OrderItemController@store');
+//Route::put('/orderItems/{orderItem}', 'App\Http\Controllers\OrderItemController@update');
+//Route::delete('/orderItems/{orderItem}', 'App\Http\Controllers\OrderItemController@destroy');
+
+/**
+ * payment routes
+ */
+Route::get('/payments', 'App\Http\Controllers\PaymentController@index');
+Route::get('/payments/{id}', 'App\Http\Controllers\PaymentController@show');
+Route::post('/payments', 'App\Http\Controllers\PaymentController@store');
+Route::put('/payments/{id}', 'App\Http\Controllers\PaymentController@update');
+Route::delete('/payments/{id}', 'App\Http\Controllers\PaymentController@destroy');
+
