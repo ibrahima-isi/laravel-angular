@@ -24,13 +24,12 @@ return new class extends Migration
             $table->string('lastname');
             $table->string('telephone')->nullable();
             $table->string('address')->nullable();
-            $table->string('role')->default('user')->index();
+            $table->foreignId('role_id')->default(2)->constrained()->onDelete('cascade');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
-            $table->foreign('role')->references('name')->on('roles')->onDelete('cascade');
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {

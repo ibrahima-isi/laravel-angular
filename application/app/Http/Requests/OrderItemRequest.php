@@ -2,12 +2,11 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Support\Facades\Validator;
 
-class BurgerRequest extends FormRequest
+class OrderItemRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -20,14 +19,14 @@ class BurgerRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, ValidationRule|array|string>
+     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
     public function rules(): array
     {
         return [
-            'name' => ['required', 'string', 'max:50'],
-            'price' => ['required'],
-            'description' => ['required', 'string', 'max:100'],
+            'order_id' => 'required|exists:orders,id',
+            'burger_id' => 'required|exists:burgers,id',
+            'quantity' => 'required|integer|min:1',
         ];
     }
 

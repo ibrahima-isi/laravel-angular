@@ -2,17 +2,17 @@
 
 namespace Database\Seeders;
 
-use App\Models\Payment;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Burger;
 use Illuminate\Database\Seeder;
 
-class PaymentSeeder extends Seeder
+class BurgerSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Payment::factory(10)->create();
+        Burger::factory(45)->create();
     }
+
 }

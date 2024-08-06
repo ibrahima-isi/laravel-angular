@@ -39,6 +39,7 @@ class OrderController extends Controller
     {
         try {
             $order = $request->all();
+            $order['date_order'] = now()->toDateTime();
             Order::create($order);
             return response()->json(['message' => 'Order created successfully', 'order' => $order], 201);
         }catch (\Exception $e) {

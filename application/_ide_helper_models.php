@@ -13,15 +13,16 @@
 
 namespace App\Models{
 /**
- *
+ * 
  *
  * @property int $id
  * @property string $name
  * @property string $price
  * @property string $description
- * @property string $image
+ * @property string|null $image
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property int $quantity
  * @method static \Database\Factories\BurgerFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|Burger newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Burger newQuery()
@@ -32,6 +33,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Burger whereImage($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Burger whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Burger wherePrice($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Burger whereQuantity($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Burger whereUpdatedAt($value)
  */
 	class Burger extends \Eloquent {}
@@ -39,36 +41,36 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- *
+ * 
  *
  * @property int $id
  * @property int $user_id
  * @property int $burger_id
- * @property string $date_command
+ * @property string $date_order
  * @property string $status
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Database\Factories\CommandeFactory factory($count = null, $state = [])
+ * @method static \Database\Factories\OrderFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|Order newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Order newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Order query()
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereBurgerId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Order whereDateCommand($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereDateOrder($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereUserId($value)
  */
-	class Commande extends \Eloquent {}
+	class Order extends \Eloquent {}
 }
 
 namespace App\Models{
 /**
- *
+ * 
  *
  * @property int $id
- * @property int $commande_id
+ * @property int $order_id
  * @property string $amount
  * @property string $payment_date
  * @property string $payment_method
@@ -80,9 +82,9 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Payment newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Payment query()
  * @method static \Illuminate\Database\Eloquent\Builder|Payment whereAmount($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Payment whereCommandeId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Payment whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Payment whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Payment whereOrderId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Payment wherePaymentDate($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Payment wherePaymentMethod($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Payment wherePaymentStatus($value)
@@ -93,7 +95,7 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- *
+ * 
  *
  * @property int $id
  * @property string $name
@@ -113,7 +115,7 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- *
+ * 
  *
  * @property int $id
  * @property string $firstname

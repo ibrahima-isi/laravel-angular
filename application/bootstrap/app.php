@@ -12,7 +12,15 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        //
+        // Middleware pour les sessions
+        $middleware->alias([
+            'startSession' => \Illuminate\Session\Middleware\StartSession::class,
+            'shareErrorsFromSession' => \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+            'checkRole' => \App\Http\Middleware\CheckRole::class,
+            'auth.custom' => \App\Http\Middleware\RedirectIfUnauthenticated::class,
+        ]);
+        // Assurez-vous que les middleware de session sont appliqués à vos routes API
+        $middleware->group('api', ['startSession', 'shareErrorsFromSession']);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

@@ -2,10 +2,11 @@
 
 namespace Database\Factories;
 
+use App\Models\Burger;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Burger>
+ * @extends Factory<Burger>
  */
 class BurgerFactory extends Factory
 {
@@ -17,7 +18,11 @@ class BurgerFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => $this->faker->name,
+            'price' => $this->faker->randomFloat(2, 1, 100),
+            'description' => $this->faker->text,
+            'image' => $this->faker->imageUrl(),
+            'quantity' => $this->faker->randomNumber(2),
         ];
     }
 }

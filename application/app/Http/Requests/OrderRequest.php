@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Support\Facades\Validator;
 
 class OrderRequest extends FormRequest
 {
@@ -23,8 +25,16 @@ class OrderRequest extends FormRequest
     {
         return [
             'user_id' => ['required', 'integer', 'min:1'],
-            'burger_id' => ['required', 'integer', 'min:1'],
-            'date_order' => ['required'],
         ];
+    }
+    /**
+     * Handle a failed validation attempt.
+     */
+    protected function failedValidation(Validator|\Illuminate\Contracts\Validation\Validator $validator)
+    {
+        throw new HttpResponseException(response()->json([
+            'message' => 'The given data was invalid.',
+            'errors' => $validator->errors(),
+        ], 422));
     }
 }

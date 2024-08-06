@@ -1,13 +1,11 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Auth;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Http\Exceptions\HttpResponseException;
-use Illuminate\Support\Facades\Validator;
 
-class BurgerRequest extends FormRequest
+class LoginRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,18 +23,16 @@ class BurgerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'string', 'max:50'],
-            'price' => ['required'],
-            'description' => ['required', 'string', 'max:100'],
+            'email' => ['required', 'string', 'email', 'max:50'],
+            'password' => ['required', 'string'],
         ];
     }
 
     /**
      * Handle a failed validation attempt.
      */
-    protected function failedValidation(Validator|\Illuminate\Contracts\Validation\Validator $validator)
-    {
-        throw new HttpResponseException(response()->json([
+    protected function failedValidation(\Illuminate\Contracts\Validation\Validator $validator){
+        throw new \Illuminate\Http\Exceptions\HttpResponseException(response()->json([
             'message' => 'The given data was invalid.',
             'errors' => $validator->errors(),
         ], 422));
