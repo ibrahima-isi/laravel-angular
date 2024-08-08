@@ -62,7 +62,7 @@ class AuthenticationController extends Controller
                 'user' => $user,
                 'access_token' => $token,
                 'token_type' => 'Bearer'
-            ]);
+            ], status: 200, headers: ['Authorization' => $token]);
 
         } catch (\Exception $e) {
             return response()->json([

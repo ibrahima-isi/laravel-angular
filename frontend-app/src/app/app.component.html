@@ -1,8 +1,35 @@
-<h1>Angular Router App</h1>
-<nav>
-  <ul>
-    <li><a routerLink="/user" routerLinkActive="active" ariaCurrentWhenActive="page">User Component</a></li>
-  </ul>
-</nav>
-<!-- The routed views render in the <router-outlet>-->
-<router-outlet></router-outlet>
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a routerLink="/" class="navbar-brand">CINAYE-BURGER</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a routerLink="/home" routerLinkActive="active" class="nav-link active" ariaCurrentWhenActive="page">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="/about" routerLinkActive="active" class="nav-link active" ariaCurrentWhenActive="page">Utilisateur</a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="/contact" routerLinkActive="active" class="nav-link active" ariaCurrentWhenActive="page">Commande</a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="/burger" routerLinkActive="active" class="nav-link active" ariaCurrentWhenActive="page">Burger</a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="/contact" routerLinkActive="active" ariaCurrentWhenActive="page" class="nav-link active">Payement</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </nav>
+</header>
+<main>
+  <router-outlet></router-outlet>
+</main>
+<app-footer></app-footer>
+

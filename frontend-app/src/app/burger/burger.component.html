@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div *ngFor="let burger of tabBurgers" class="col">
+      <div class="card h-100">
+        <img class="card-img-top" [src]="burger.image" alt="Card image cap" width="400" height="200">
+        <div class="card-body">
+          <h5 class="card-title">{{ burger.name }}</h5>
+          <p class="card-text small text-justify">{{ burger.description }}</p>
+        </div>
+        <div class="px-3 pb-2">
+          <h6 class="card-subtitle mb-2 text-muted">${{ burger.price }} </h6>
+        </div>
+        <div class="card-footer">
+          <div class="d-flex justify-content-between">
+            <button (click)="editBurger(burger.id)" class="btn btn-outline-info btn-sm">Modifier</button>
+            <button (click)="deleteBurger(burger.id)" class="btn btn-outline-danger btn-sm">Supprimer</button>
+            <button (click)="order(burger.id)" class="btn btn-success btn-sm">Commander</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

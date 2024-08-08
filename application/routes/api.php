@@ -23,6 +23,12 @@ Route::get('/user', function (Request $request) {
 Route::post('/login', 'App\Http\Controllers\Auth\AuthenticationController@login')->name('login');
 Route::post('/logout', 'App\Http\Controllers\Auth\AuthenticationController@logout')->middleware('auth.custom');
 
+/**
+ * burger list route
+ */
+Route::get('/burgers', 'App\Http\Controllers\BurgerController@index');
+Route::get('/burgers/{id}', 'App\Http\Controllers\BurgerController@show');
+
 
 Route::middleware('api')->group(function () {
     /**
@@ -52,8 +58,6 @@ Route::middleware('api')->group(function () {
         /**
          * burger routes
          */
-        Route::get('/burgers', 'App\Http\Controllers\BurgerController@index');
-        Route::get('/burgers/{id}', 'App\Http\Controllers\BurgerController@show');
 
         Route::middleware('checkRole:manager')->group(function (){
             /**

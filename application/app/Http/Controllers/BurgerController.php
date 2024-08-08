@@ -15,7 +15,7 @@ class BurgerController extends Controller
     {
         try {
             $burgers = Burger::all();
-            return response()->json(['burgers' => $burgers], 200);
+            return response()->json($burgers, 200);
         } catch (\Exception $exception) {
             return response()->json(['message' => 'Burgers not found'], 404);
         }
@@ -52,7 +52,7 @@ class BurgerController extends Controller
     {
         try{
             $burger = Burger::findOrFail($id);
-            return response()->json(['burger' => $burger], 200);
+            return response()->json($burger, 200);
         }catch (ModelNotFoundException $exception){
             return response()->json(['message' => 'Burger not found', "error message" => $exception->getMessage()], 404);
         }
