@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
 import {BurgerService} from "./service/burger.service";
 import {Burger} from "./interface/burger";
 import {NgForOf, NgOptimizedImage} from "@angular/common";
 import Swal from "sweetalert2";
 import {Router} from "@angular/router";
-import {FormBuilder, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-burger',
@@ -19,20 +17,9 @@ import {FormBuilder, Validators} from "@angular/forms";
 })
 export class BurgerComponent {
 
-  constructor(private  http: HttpClient, private burgerService: BurgerService, private router: Router, private formBuilder: FormBuilder) { }
+  tabBurgers: Burger[] = [];
 
-  /**
-   * the form builder for the burger form
-   */
-  burgerForm = this.formBuilder.group({
-    name: ['', [Validators.required]],
-    price: ['', [Validators.required]],
-    description: ['', [Validators.required, Validators.maxLength(80)]],
-    quantity: ['', [Validators.required, Validators.min(1)]],
-    image: ['']
-  }, {updateOn: 'blur'});
-
-
+  constructor(private burgerService: BurgerService, private router: Router) { }
   ngOnInit() {
     this.getBurgers();
   }
@@ -40,7 +27,6 @@ export class BurgerComponent {
   /**
    * get all burgers
    */
-  tabBurgers: Burger[] = [];
   getBurgers() {
     this.burgerService.getBurgers().subscribe((response: Burger[]) => {
       this.tabBurgers  = response;
@@ -50,19 +36,7 @@ export class BurgerComponent {
 
   editBurger(id: number) {
     this.burgerService.getBurgerById(id).subscribe((response: Burger) => {
-      this.router.navigate(['/form-burger/'+response.id, response]);
-    }, (error) => {
-      console.log(error.error);
-    });
-  }
-
-  /**
-   * update a burger
-   * @param burger burger to update
-   */
-  updateBurger(burger: Burger) {
-    this.burgerService.updateBurger(burger).subscribe((response) => {
-      console.log(response)
+      this.router.navigate(['/form-burger/'+response.id], {state: {burger: response}});
     }, (error) => {
       console.log(error.error);
     });
@@ -74,7 +48,11 @@ export class BurgerComponent {
       this.getBurgers();
     }, (error) => {
       console.log(error.error);
-      Swal.fire('Failed', `${error.error.message}`, 'error');
+      Swal.fire('Failed', `${error.error.message}`, 'error').then(() => {
+        if(error.error.redirect) {
+          this.router.navigate(['/login']);
+        }
+      });
     });
   }
 

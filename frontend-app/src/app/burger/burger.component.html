@@ -2,7 +2,7 @@
   <div class="row row-cols-1 row-cols-md-3 g-4">
     <div *ngFor="let burger of tabBurgers" class="col">
       <div class="card h-100">
-        <img class="card-img-top" [src]="burger.image" alt="Card image cap" width="400" height="200">
+        <img class="card-img-top" [src]="burger.image" alt="photo du burger" width="400" height="200">
         <div class="card-body">
           <h5 class="card-title">{{ burger.name }}</h5>
           <p class="card-text small text-justify">{{ burger.description }}</p>

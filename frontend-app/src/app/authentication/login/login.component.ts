@@ -3,6 +3,8 @@ import {FormBuilder, ReactiveFormsModule, Validators} from "@angular/forms";
 import {NgIf} from "@angular/common";
 import Swal from "sweetalert2";
 import {LoginService} from "./login.service";
+import {Login} from "./login";
+import {Router, RouterLink} from "@angular/router";
 // import { ToastModule } from 'primeng/toast';
 
 @Component({
@@ -10,14 +12,15 @@ import {LoginService} from "./login.service";
   standalone: true,
   imports: [
     ReactiveFormsModule,
-    NgIf
+    NgIf,
+    RouterLink
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
   private response: any;
-  constructor(private formBuilder: FormBuilder,private loginService: LoginService) {}
+  constructor(private formBuilder: FormBuilder,private loginService: LoginService, private router: Router) {}
 
   loginForm = this.formBuilder.group({
     email: ['', [Validators.required, Validators.email]],
@@ -28,21 +31,23 @@ export class LoginComponent {
     });
 
   submitted = false;
-  private email = this.loginForm.value.email;
-  private password = this.loginForm.value.password;
-
+  private user: any;
   onSubmit(): void {
     this.submitted = true;
     if(this.loginForm.valid){
       console.log("saisi: ",  this.loginForm.value);
-      this.response = this.loginService.login(this.email, this.password, true).subscribe((response) => {
+      this.user = this.loginForm.value
+
+      this.response = this.loginService.login(this.user).subscribe((response: Login) => {
         console.log('REPONSE 1: ', response);
-        console.log('REPONSE 2: ', this.response);
         Swal.fire({
           title: 'Success!',
-          text: 'Your order has been submitted',
+          text: response.message,
           icon: 'success',
-          confirmButtonText: 'Cool'
+          timer: 1500,
+
+        }).then(() => {
+          this.router.navigate(['/burger'], {state: {user: response.user}});
         });
       }, (error) => {
         console.log('ERREUR: ', error);

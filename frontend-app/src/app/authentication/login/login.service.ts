@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
+import {Login} from "./login";
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,8 @@ export class LoginService {
 
   private apiUrl = "http://localhost:8000/api";
 
-  login(email: any, password: any, remember: boolean) {
-    return this.http.post(this.apiUrl+'/login', {"email" : email, "password": password, "remember": remember});
+  login(user: any): Observable<Login> {
+    return this.http.post<Login>(this.apiUrl+'/login', user);
   }
 
   logout() {

@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
 export const authGuard: CanActivateFn = (route, state) => {
   const authService = inject(LoginService);
   const router = inject(Router);
-  if(authService.login('username', 'password', true)) {
+  if(authService.login({})) {
     router.navigate(['/burger']).finally(() => {
       Swal.fire({
         title: 'Success',

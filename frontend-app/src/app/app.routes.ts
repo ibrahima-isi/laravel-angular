@@ -5,7 +5,7 @@ import {BurgerComponent} from "./burger/burger.component";
 import {LoginComponent} from "./authentication/login/login.component";
 import {RegisterComponent} from "./authentication/register/register.component";
 import {authGuard} from "./authentication/guard/auth.guard";
-import {BurgerFormComponent} from "./burger/forms/burger-form/burger-form.component";
+import {BurgerFormComponent} from "./burger/burger-form/burger-form.component";
 import {UserFormComponent} from "./user/user-form/user-form.component";
 
 export const routes: Routes = [
@@ -19,6 +19,7 @@ export const routes: Routes = [
   // burger routes
   {path: 'burger', component: BurgerComponent},
   {path: 'form-burger/:id', component: BurgerFormComponent},
+  {path: 'form-burger', component: BurgerFormComponent},
   {path: '', redirectTo: '/burger', pathMatch: 'full'},
 
     // Default route
