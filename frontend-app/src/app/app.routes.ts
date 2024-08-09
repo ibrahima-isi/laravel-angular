@@ -7,6 +7,9 @@ import {RegisterComponent} from "./authentication/register/register.component";
 import {authGuard} from "./authentication/guard/auth.guard";
 import {BurgerFormComponent} from "./burger/burger-form/burger-form.component";
 import {UserFormComponent} from "./user/user-form/user-form.component";
+import {OrderComponent} from "./order/order/order.component";
+import {PaymentComponent} from "./payment/payment/payment.component";
+import {HomeComponent} from "./home/home.component";
 
 export const routes: Routes = [
   // login routes
@@ -22,8 +25,16 @@ export const routes: Routes = [
   {path: 'form-burger', component: BurgerFormComponent},
   {path: '', redirectTo: '/burger', pathMatch: 'full'},
 
+  // order routes
+  {path: 'order', component: OrderComponent},
+
+  // payment routes
+  {path: 'payment', component: PaymentComponent},
+
     // Default route
   // {path: '', redirectTo: '/', pathMatch: 'full'},
+  {path: 'home', component: BurgerComponent},
+  {path: '',component: HomeComponent},
   {path: '**', component: PageNotFoundComponent}
 
 ];

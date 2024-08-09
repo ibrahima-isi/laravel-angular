@@ -3,14 +3,15 @@ import {BurgerService} from "./service/burger.service";
 import {Burger} from "./interface/burger";
 import {NgForOf, NgOptimizedImage} from "@angular/common";
 import Swal from "sweetalert2";
-import {Router} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-burger',
   standalone: true,
   imports: [
     NgForOf,
-    NgOptimizedImage
+    NgOptimizedImage,
+    RouterLink
   ],
   templateUrl: './burger.component.html',
   styleUrl: './burger.component.css'
